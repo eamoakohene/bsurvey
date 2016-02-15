@@ -699,42 +699,9 @@ SQ <- R6Class(
         self$qrys_db <- value
       }
       invisible(self)
-    },
-
-    get_mssql_con = function() {
-      data.location <- 'local'
-      stats_con = 'Driver={ODBC Driver 11 for SQL Server};server=wbserver;database=BEAMAstatistics;Trusted_Connection=Yes;Connection Timeout=120;'
-
-      if (tolower(data.location) == 'remote') {
-        computer <- Sys.info()["nodename"]
-        if (computer == 'BEAMAPC') {
-          stats_con <-
-            'Driver={SQL Server Native Client 10.0};Server=tcp:me4ganhaf2.database.windows.net,1433;Database=trends_db;Uid=eamoakohene@me4ganhaf2;Pwd=Badd2badd2badd;Encrypt=yes;Connection Timeout=30;'
-
-        }else if (computer == 'WBSERVER') {
-          stats_con <-
-            'Driver=ODBC Driver 11 for SQL Server;Server=tcp:me4ganhaf2.database.windows.net,1433;Database=trends_db;Uid=eamoakohene@me4ganhaf2;Pwd=Badd2badd2badd;Encrypt=yes;Connection Timeout=30;'
-
-        }else{
-          stats_con <-
-            'Driver=ODBC Driver 11 for SQL Server;Server=tcp:me4ganhaf2.database.windows.net,1433;Database=trends_db;Uid=eamoakohene@me4ganhaf2;Pwd=Badd2badd2badd;Encrypt=yes;Connection Timeout=30;'
-        }
-      }else{
-        computer <- Sys.info()["nodename"]
-        if (computer == 'BEAMAPC') {
-          stats_con = 'Driver={SQL Server Native Client 10.0};server=tcp:83.217.99.98,1433;database=BEAMAstatistics;uid=bss;pwd=_badd?$_AAEJEAS_1234567;Connection Timeout=120;'
-
-        }else if (computer == 'WBSERVER') {
-          stats_con = 'Driver={ODBC Driver 11 for SQL Server};server=wbserver;database=BEAMAstatistics;Trusted_Connection=Yes;Connection Timeout=120;'
-
-        }else{
-          stats_con = 'Driver={ODBC Driver 11 for SQL Server};server=wbserver;database=BEAMAstatistics;Trusted_Connection=Yes;Connection Timeout=120;'
-
-        }
-
-      }
-      return(stats_con)
     }
+
+
 )
 )
 
