@@ -1,0 +1,9 @@
+Package: bsurvey
+Type: Package
+Title: BEAMA Trends Survey
+Version: 0.1.0
+Author: E Amoakohene
+Maintainer: <emmanuel.amoakohene@beama.org.uk>
+Description: BEAMA quaterly trends survey
+License: GPL
+LazyData: TRUE
