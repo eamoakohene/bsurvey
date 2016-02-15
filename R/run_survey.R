@@ -1,11 +1,11 @@
 #' @export
 run_survey <- function() {
 
-  appDir <- system.file("survey", "surveyapp", package = "bsurvey")
-  if (appDir == "") {
-    stop("Could not find example directory. Try re-installing `survey`.", call. = FALSE)
+  app_dir <- system.file("survey", "surveyapp", package = "bsurvey")
+  if (app_dir == "") {
+    stop("Directory does not exist!", call. = FALSE)
   }
 
-  shiny::runApp(appDir, display.mode = "auto")
+  shiny::runApp(app_dir, display.mode = "auto")
 
 }
