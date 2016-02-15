@@ -703,4 +703,7 @@ SQ <- R6Class(
 )
 )
 
+# SQ$new("bts_upate_data_days")$qry_exec()
+# SQ$new("bts_update_cost_questions")$qry_exec()
+# SQ$new("bts_update_export_captions")$qry_exec()
 
