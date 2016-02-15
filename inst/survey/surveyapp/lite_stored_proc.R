@@ -10,8 +10,8 @@ SQ <- R6Class(
 
   public = list(
     dbs = list(
-      QRYS = "bts.sqlite",
-      BTS =  "bts.sqlite"
+      QRYS = "bnetworks.sqlite",
+      BNW =  "bnetworks.sqlite"
     ),
 
     params = NULL,        # query parameters
@@ -19,7 +19,7 @@ SQ <- R6Class(
     qry_sql = NULL,    # stored query sql statement
     qry_params = NULL, # stored query parameters
     SQRY = "QRYS", # path to stored queries database
-    TDB = "BTS", # path to target database
+    TDB = "BNW", # path to target database
 
 
     initialize = function(name , params,sqryDB,targetDB) {
@@ -700,17 +700,7 @@ SQ <- R6Class(
       }
       invisible(self)
     }
-
-
 )
 )
 
-
-
-#sq <- SQ$new()
-#sq$table_tail("BINDX::beama_indices")
-#sq$table_update("BINDX::beama_indices", set="qtr=2", where=" issue=550 and mth=5")
-#sq$table_copy("BNW::sankey_data","BINDX")
-#sq$table_select("BINDX::beama_indices",fields="yr,mth,index_name,issue,index_base",n=10)
-#`rm(list=ls(all=TRUE))
 
