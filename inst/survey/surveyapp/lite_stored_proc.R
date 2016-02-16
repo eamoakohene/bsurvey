@@ -10,8 +10,8 @@ SQ <- R6Class(
 
   public = list(
     dbs = list(
-      QRYS = "bnetworks.sqlite",
-      BNW =  "bnetworks.sqlite"
+      QRYS = "bts.sqlite",
+      BNW =  "bts.sqlite"
     ),
 
     params = NULL,        # query parameters
