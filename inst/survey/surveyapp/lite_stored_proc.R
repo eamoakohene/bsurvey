@@ -11,7 +11,7 @@ SQ <- R6Class(
   public = list(
     dbs = list(
       QRYS = "bts.sqlite",
-      BNW =  "bts.sqlite"
+      BTS =  "bts.sqlite"
     ),
 
     params = NULL,        # query parameters
@@ -19,7 +19,7 @@ SQ <- R6Class(
     qry_sql = NULL,    # stored query sql statement
     qry_params = NULL, # stored query parameters
     SQRY = "QRYS", # path to stored queries database
-    TDB = "BNW", # path to target database
+    TDB = "BTS", # path to target database
 
 
     initialize = function(name , params,sqryDB,targetDB) {
