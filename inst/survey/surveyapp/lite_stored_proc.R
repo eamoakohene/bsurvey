@@ -1,11 +1,7 @@
 #rm(list=ls(all=TRUE))
-require(R6)
-require(stringr)
-require(RODBC)
-require(sqldf)
-require(RSQLite)
 
-SQ <- R6Class(
+
+SQ <- R6::R6Class(
   "SQ",
 
   public = list(
@@ -227,7 +223,7 @@ SQ <- R6Class(
 
       #multi-statement break into vector
       #cat(temp_sql)
-      if (str_detect(temp_sql,";")) {
+      if (stringr::str_detect(temp_sql,";")) {
         temp_sql <- gsub("[\r\n]","",strsplit(temp_sql,";")[[1]])
       }
 
@@ -368,13 +364,13 @@ SQ <- R6Class(
     },
 
     table_import = function(src,dst,tbl) {
-      dbh <- odbcDriverConnect(src)
+      dbh <- RODBC::odbcDriverConnect(src)
 
-      src_table <- sqlQuery(dbh,paste0("select * from ",tbl))
-      dst_db <- RSQLite::dbConnect(SQLite(), dbname = dst)
+      src_table <- RODBC::sqlQuery(dbh,paste0("select * from ",tbl))
+      dst_db <- RSQLite::dbConnect(RSQLite::SQLite(), dbname = dst)
       RSQLite::dbWriteTable(conn = dst_db, name = tbl, value = src_table)
 
-      close(dbh)
+      RODBC::close(dbh)
     },
 
     tables_list = function(value) {
@@ -440,8 +436,8 @@ SQ <- R6Class(
 
     table_split_name = function(tname) {
       temp <- tname
-      if (str_detect(tname,"::")) {
-        temp <- str_split(tname,"::")[[1]]
+      if (stringr::str_detect(tname,"::")) {
+        temp <- stringr::str_split(tname,"::")[[1]]
       }
       return(temp)
     },
@@ -513,7 +509,7 @@ SQ <- R6Class(
 
     table_create = function (tname,df) {
       RSQLite::dbWriteTable(
-        conn = RSQLite::dbConnect(SQLite(), dbname = self$target_db),
+        conn = RSQLite::dbConnect(RSQLite::SQLite(), dbname = self$target_db),
         name = tname,
         value = df
       )
@@ -615,9 +611,9 @@ SQ <- R6Class(
 
 
     qry_run_ms = function(value) {
-      dbh <- odbcDriverConnect(private$get_mssql_con())
-      result <- sqlQuery(dbh, value)
-      close(dbh)
+      dbh <- RODBC::odbcDriverConnect(private$get_mssql_con())
+      result <- RODBC::sqlQuery(dbh, value)
+      RODBC::close(dbh)
 
       return (result)
     }
