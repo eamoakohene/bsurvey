@@ -17,25 +17,6 @@ lite_add_df <- function(mydf,tbl='badd'){
 
 }
 
-lite_run_msql <- function(qry){
-
-  require(RODBC)
-  stats_con <- NULL
-  computer<- Sys.info()["nodename"]
-  if(computer=='BEAMAPC'){
-    stats_con = 'Driver={SQL Server Native Client 10.0};server=tcp:83.217.99.98,1433;database=BEAMAstatistics;uid=bss;pwd=_badd?$_AAEJEAS_1234567;Connection Timeout=120;'
-  }else if(computer=='WBSERVER'){
-    stats_con = 'Driver={ODBC Driver 11 for SQL Server};server=wbserver;database=BEAMAstatistics;Trusted_Connection=Yes;Connection Timeout=120;'
-  }else{
-    stats_con = 'Driver={ODBC Driver 11 for SQL Server};server=wbserver;database=BEAMAstatistics;Trusted_Connection=Yes;Connection Timeout=120;'
-  }
-
-  dbhandle <- odbcDriverConnect(stats_con)
-
-  mydf<-sqlQuery(dbhandle,qry)
-  close(dbhandle)
-  return(mydf)
-}
 
 lite_move_to_sqlite <- function(tbl){
 
